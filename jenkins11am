@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+     tools {
+         maven'maven-3.8.3'
+        }
+    stages {
+        stage('fetch the code') {
+            steps {
+               git credentialsId: 'github-cred', url: 'https://github.com/ramvadde/java-db-Login.git'
+            }
+        }
+        
+         stage('build the code') {
+            steps {
+                sh 'mvn clean package'
+            }
+         }
+         
+          stage('deploy the code') {
+            steps {
+                deploy adapters: [tomcat8(credentialsId: 'admin-tomcat-dev-lwplabs', path: '', url: 'http://172.31.12.175:8080')], contextPath: 'new', onFailure: false, war: '**/*.war'
+            }
+          }
+    }
+}
