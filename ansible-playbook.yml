@@ -85,7 +85,7 @@
       docker_image:
         build:
           path: /tmp/{{ JOB_NAME }}
-        name: 127.0.0.1:5000/lwplabsnew
+        name: 127.0.0.1:5000/lwplabslogin
         tag: "latest"
         push: yes
         nocache: yes
