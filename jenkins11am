@@ -1,25 +1,24 @@
 pipeline {
     agent any
-     tools {
-         maven'maven-3.8.3'
-        }
+    tool {
+        maven 'maven-3.8.5'
+    }
     stages {
         stage('fetch the code') {
             steps {
-               git credentialsId: 'github-cred', url: 'https://github.com/ramvadde/java-db-Login.git'
+                git credentialsId: 'c0847f81-34eb-4efb-b064-c5685f51e982', url: 'https://github.com/ramvadde/java-db-Login.git'
             }
         }
-        
          stage('build the code') {
             steps {
                 sh 'mvn clean package'
             }
-         }
-         
-          stage('deploy the code') {
+        }
+         stage('deploy the code') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'admin-tomcat-dev-lwplabs', path: '', url: 'http://172.31.12.175:8080')], contextPath: 'new', onFailure: false, war: '**/*.war'
+                deploy adapters: [tomcat8(credentialsId: 'admin-tomcat', path: '', url: 'http://172.31.15.94:8080')], contextPath: 'new', onFailure: false, war: '**/*.war'
             }
-          }
+        }
+        
     }
 }
