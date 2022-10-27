@@ -39,11 +39,13 @@
            <!-- false means true here -->
            <useIncrementalCompilation>true</useIncrementalCompilation>
            <compilerArgs>
-            <arg>-J-Xss512m</arg>
-            <arg>-J-noverify</arg>
-            <arg>-verbose</arg>
-            <arg>-Xlint:all,-options,-path</arg>
-           </compilerArgs>        
+               <arg>-J-Xss512m</arg>
+               <arg>-J-noverify</arg>
+               <arg>-verbose</arg>
+               <arg>-Xlint:all,-options,-path</arg>
+           </compilerArgs>   
+             </configuration>
+        </plugin>         
 
         </plugin>
     </plugins>
